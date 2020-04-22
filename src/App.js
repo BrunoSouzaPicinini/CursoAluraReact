@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 import './App.css';
 import Tabela from "./Tabela";
-
+import ContaClicks from "./ContaClicks";
 
 class App extends Component {
 
@@ -47,6 +47,7 @@ class App extends Component {
             <div className="App">
                 <h1>Hello World!</h1>
                 <Tabela autores={this.state.autores} removeAutor={this.removeAutor}/>
+                <ContaClicks></ContaClicks>
             </div>
         );
     };
