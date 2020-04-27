@@ -6,6 +6,7 @@ import Tabela from "./Tabela";
 import ContaClicks from "./ContaClicks";
 import Formulario from "./Formulario";
 import Header from "./Header";
+import ButtonSTLD from "./ButtonSTLD";
 
 class App extends Component {
 
@@ -58,6 +59,7 @@ class App extends Component {
                     <Formulario escutadorDeSubmit={this.escutadorDeSubmit}/>
                 </div>
                 <ContaClicks/>
+                <ButtonSTLD/>
             </Fragment>
         );
     };
