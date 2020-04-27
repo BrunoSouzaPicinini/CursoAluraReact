@@ -39,7 +39,7 @@ class App extends Component {
         this.setState({
             autores: autores.filter((autor, posAtual) => {
                 return posAtual !== index;
-            })
+            }),
         });
     }
 
@@ -51,8 +51,8 @@ class App extends Component {
         return (
             <Fragment>
                 <Tabela autores={this.state.autores} removeAutor={this.removeAutor}/>
-                <Formulario escutadorDeSubmit={this.escutadorDeSubmit()}/>
-                <ContaClicks></ContaClicks>
+                <Formulario escutadorDeSubmit={this.escutadorDeSubmit}/>
+                <ContaClicks/>
             </Fragment>
         );
     };
