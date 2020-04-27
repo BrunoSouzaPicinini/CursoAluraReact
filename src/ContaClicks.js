@@ -5,9 +5,9 @@ function ContaClicks(){
     const [contador, increaseContador] = useState(0);
 
     return (
-        <div>
+        <div className="center">
             <p>Você clicou {contador} vezes!</p>
-            <button onClick={() => increaseContador(contador + 1)}>Clicar</button>
+            <button onClick={() => increaseContador(contador + 1)} className="waves-effect waves-light indigo lighten-2 btn">Clicar</button>
         </div>
     );
 }
