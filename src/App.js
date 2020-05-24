@@ -7,6 +7,7 @@ import ContaClicks from "./ContaClicks";
 import Formulario from "./Formulario";
 import Header from "./Header";
 import ButtonSTLD from "./ButtonSTLD";
+import PopUp from "./PopUp";
 
 class App extends Component {
 
@@ -44,6 +45,7 @@ class App extends Component {
                 return posAtual !== index;
             }),
         });
+        PopUp.exibeMensagem('error', "Autor removido com sucesso");
     }
 
     escutadorDeSubmit = autor => {
