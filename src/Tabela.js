@@ -7,7 +7,7 @@ const TableHead = () => {
             <th>Autores</th>
             <th>Livros</th>
             <th>Preços</th>
-            <th>Remover</th>
+              <th>Remover</th>
         </tr>
         </thead>
     );
@@ -16,12 +16,12 @@ const TableHead = () => {
 const TableBody = props => {
     const linhas = props.autores.map((linha, index) => {
         return (
-            <tr key={index}>
+            <tr key={linha.id}>
                 <td>{linha.nome}</td>
                 <td>{linha.livro}</td>
                 <td>{linha.preco}</td>
                 <td>
-                    <button onClick={() => props.removeAutor(index)} >Remover</button>
+                    <button onClick={() => props.removeAutor(linha.id)} className="waves-effect waves-light indigo lighten-2 btn" >Remover</button>
                 </td>
             </tr>
         );
@@ -43,7 +43,7 @@ class Tabela extends Component {
                 <TableHead/>
                 <TableBody autores={autores} removeAutor={removeAutor}/>
             </table>
-        );
+         );
     }
 }
 

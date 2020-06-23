@@ -33,7 +33,7 @@ class Formulario extends Component {
             livro: '',
             preco: '',
             validacao: this.validador.valido()
-        }
+        };
 
         this.state = this.stateInicial;
     }
@@ -59,13 +59,13 @@ class Formulario extends Component {
             });
 
         }
-    }
+    };
 
     escutadorDeInput = event => {
         const {name, value} = event.target;
 
         this.setState({[name]: value});
-    }
+    };
 
     render() {
 
