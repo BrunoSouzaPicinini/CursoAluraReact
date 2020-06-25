@@ -1,5 +1,5 @@
-import React from "react";
-import LinkWrapper from './LinkWrapper';
+    import React from "react";
+import LinkWrapper from '../../Utils/LinkWrapper';
 
 const Header = () => {
     return (

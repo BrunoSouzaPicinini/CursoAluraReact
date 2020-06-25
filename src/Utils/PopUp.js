@@ -8,6 +8,6 @@ const PopUp = {
         if(status === 'error')
             M.toast({html: msg, classes: 'red', displayLength: 2000});
     }
-}
+};
 
 export default PopUp;

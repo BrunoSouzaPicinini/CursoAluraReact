@@ -10,7 +10,9 @@ const ApiService = {
             method: 'POST',
             headers: {'content-type': 'application/json'},
             body: autor
-        });
+        })
+            .then(res => ApiService.TrataErros(res))
+            .then(res => res.json());
     },
     ListaNomes: () => {
         return fetch('http://localhost:8000/api/autor/nome')
@@ -31,7 +33,7 @@ const ApiService = {
             .then(res => res.json());
     },
     TrataErros: res => {
-        if(!res.ok){
+        if (!res.ok) {
             throw Error(res.responseText);
         }
         return res;
