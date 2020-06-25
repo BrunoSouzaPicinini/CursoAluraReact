@@ -27,7 +27,6 @@ class App extends Component {
         const autoresAtualizado = autores.filter(autor => autor.id !== id);
 
         ApiService.RemoveAutor(id)
-            .then(res => ApiService.TrataErros(res))
             .then(res =>  {
                 if(res.message === 'deleted'){
                     this.setState({autores : [...autoresAtualizado]});
@@ -39,7 +38,6 @@ class App extends Component {
 
     escutadorDeSubmit = autor => {
         ApiService.CriaAutor(JSON.stringify(autor))
-            .then(res => ApiService.TrataErros(res))
             .then(res => {
                 if(res.message === 'success') {
                     this.setState({autores: [...this.state.autores, res.data]});
@@ -51,7 +49,6 @@ class App extends Component {
 
     componentDidMount() {
         ApiService.ListaAutores()
-            .then(res => ApiService.TrataErros(res))
             .then(res => {
                 if(res.message === 'success')
                     this.setState({autores: [...this.state.autores, ...res.data]})
