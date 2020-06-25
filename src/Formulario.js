@@ -45,7 +45,6 @@ class Formulario extends Component {
         if (validacao.isValid) {
             this.props.escutadorDeSubmit(this.state);
             this.setState(this.stateInicial);
-            PopUp.exibeMensagem('success', "Autor adicionado com sucesso");
         } else {
             const {nome, livro, preco} = validacao;
             const campos = [nome, livro, preco];
