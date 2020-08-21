@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React from "react";
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -6,39 +6,44 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Button from '@material-ui/core/Button';
 
-class Tabela extends Component {
-    render() {
+const BotaoDeleta = () => {
+    <Button
+        variant='contained'
+        color='primary'
+        onClic  k={() => {removeAutor(dados.id)}}>
+        Remover
+    </Button>
+}
+const Tabela = props => {
+    const {campos, dados, removeDado} = props;
 
-        const {autores, removeAutor} = this.props;
-
-        return (
-            <Table className="centered highlight">
-                <TableHead>
-                    <TableRow>
-                        <TableCell>Autores</TableCell>
-                        <TableCell>Livros</TableCell>
-                        <TableCell  >Preços</TableCell>
-                        <TableCell>Remover</TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
+    return (
+        <Table className="centered highlight">
+            <TableHead>
+                <TableRow>
                     {
-                        autores.map(autor => (
-                            <TableRow key={autor.id}>
-                                <TableCell>{autor.nome}</TableCell>
-                                <TableCell>{autor.livro}</TableCell>
-                                <TableCell>{autor.preco}</TableCell>
-                                <TableCell>
-                                    <Button onClick={() => removeAutor(autor.id)} variant="contained" color="primary">Remover</Button>
-                                </TableCell>
-                            </TableRow>
-                        ))
+                        campos.map(x => (<TableCell>{x.titulo}</TableCell>))
                     }
+                </TableRow>
+            </TableHead>
+            <TableBody>
+                {
+                    dados.map(dado => (
+                        <TableRow key={dado.id}>
+                            {
+                                campos.map(campo => (<TableCell>{dado[campo.dado]}</TableCell>))
+                            }
+                            <TableCell>
+                                <Button onClick={() => removeDado(dado.id)} variant="contained"
+                                        color="primary">Remover</Button>
+                            </TableCell>
+                        </TableRow>
+                    ))
+                }
 
-                </TableBody>
-            </Table>
-         );
-    }
+            </TableBody>
+        </Table>
+    );
 }
 
 export default Tabela;
