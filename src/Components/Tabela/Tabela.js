@@ -6,16 +6,31 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Button from '@material-ui/core/Button';
 
-const BotaoDeleta = () => {
-    <Button
-        variant='contained'
-        color='primary'
-        onClic  k={() => {removeAutor(dados.id)}}>
-        Remover
-    </Button>
+const CellDeleta = ({removeDados, id, titulo}) => {
+    if(!removeDados)
+        return null;
+
+    if(titulo){
+        return <TableCell>Remover</TableCell>
+    }
+
+    return(
+        <TableCell>
+            <Button
+                variant='contained'
+                color='primary'
+                onClick={() => {
+                    removeDados(id)
+                }}
+            >
+                Remover
+            </Button>
+        </TableCell>
+    )
 }
+
 const Tabela = props => {
-    const {campos, dados, removeDado} = props;
+    const {campos, dados, removeDados} = props;
 
     return (
         <Table className="centered highlight">
@@ -24,6 +39,7 @@ const Tabela = props => {
                     {
                         campos.map(x => (<TableCell>{x.titulo}</TableCell>))
                     }
+                    <CellDeleta removeDados titulo/>
                 </TableRow>
             </TableHead>
             <TableBody>
@@ -33,10 +49,7 @@ const Tabela = props => {
                             {
                                 campos.map(campo => (<TableCell>{dado[campo.dado]}</TableCell>))
                             }
-                            <TableCell>
-                                <Button onClick={() => removeDado(dado.id)} variant="contained"
-                                        color="primary">Remover</Button>
-                            </TableCell>
+                            <CellDeleta id={dado.id} removeDados={removeDados}/>
                         </TableRow>
                     ))
                 }
