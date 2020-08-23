@@ -3,6 +3,7 @@ import Header from '../../Components/Header/Header';
 import DataTable from '../../Components/DataTable/DataTable';
 import ApiService from "../../Utils/ApiService";
 import PopUp from "../../Utils/PopUp";
+import Tabela from "../../Components/Tabela/Tabela";
 
 
 class Autores extends Component {
@@ -11,8 +12,7 @@ class Autores extends Component {
 
         this.state = {
             nomes: [
-            ],
-            titulos: ['Autores']
+            ]
         };
     }
 
@@ -26,12 +26,13 @@ class Autores extends Component {
     }
 
     render() {
+        const campos = [{titulo:'Autor', dado:"nome"}];
         return (
             <Fragment>
                 <Header />
                 <div className='container'>
                     <h1>Página de Autores</h1>
-                    <DataTable dados={this.state.nomes} titulos={this.state.titulos} colunas={['nome']}/>
+                    <Tabela campos={campos} dados={this.state.nomes} />
                 </div>
             </Fragment>
         );

@@ -39,7 +39,7 @@ const Tabela = props => {
                     {
                         campos.map(x => (<TableCell>{x.titulo}</TableCell>))
                     }
-                    <CellDeleta removeDados titulo/>
+                    <CellDeleta removeDados={removeDados} titulo/>
                 </TableRow>
             </TableHead>
             <TableBody>

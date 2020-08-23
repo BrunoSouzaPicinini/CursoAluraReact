@@ -3,6 +3,7 @@ import Header from '../../Components/Header/Header';
 import DataTable from '../../Components/DataTable/DataTable';
 import ApiService from "../../Utils/ApiService";
 import PopUp from "../../Utils/PopUp";
+import Tabela from "../../Components/Tabela/Tabela";
 
 
 class Livros extends Component {
@@ -10,8 +11,8 @@ class Livros extends Component {
         super(props);
 
         this.state = {
-            livros: [],
-            titulos: ['Livros']
+            livros: []
+
         };
     }
 
@@ -25,12 +26,13 @@ class Livros extends Component {
     }
 
     render() {
+        const campos = [{titulo:"Livros", dado:'livro'}];
         return (
             <Fragment>
                 <Header />
                 <div className='container'>
                     <h1>Página de Livros</h1>
-                    <DataTable dados={this.state.livros} titulos={this.state.titulos} colunas={['livro']}/>
+                    <Tabela campos={campos} dados={this.state.livros} />
                 </div>
             </Fragment>
         );

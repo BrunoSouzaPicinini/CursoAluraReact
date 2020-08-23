@@ -58,7 +58,7 @@ class Home extends Component {
 
     render() {
         const campos = [
-            { titulo: 'Autore', dado: 'nome'},
+            { titulo: 'Autor', dado: 'nome'},
             { titulo: 'Livro', dado: 'livro'},
             { titulo: 'Preço', dado: 'preco'}]
         return (
