@@ -1,11 +1,19 @@
 import React, {Fragment} from 'react';
 import Header from "../../Components/Header/Header";
+import Typography from "@material-ui/core/Typography";
+import Container from "@material-ui/core/Container";
+import {makeStyles} from "@material-ui/core/styles";
 
 const Sobre = () => {
     return(
         <Fragment>
             <Header/>
-            <h1>Sobre</h1>
+            <Container maxWidth='sm'>
+                <Typography variant='h1' component='h2'>Sobre</Typography>
+                <Typography variant='body1' component='p'>
+                    A Casa do Código é uma editora que desenvolve e edita livros em diversos formatos.
+                </Typography>
+            </Container>
         </Fragment>
     );
 }

@@ -1,6 +1,5 @@
 import React, {Component, Fragment} from 'react';
 import Header from '../../Components/Header/Header';
-import DataTable from '../../Components/DataTable/DataTable';
 import ApiService from "../../Utils/ApiService";
 import PopUp from "../../Utils/PopUp";
 import Tabela from "../../Components/Tabela/Tabela";
@@ -11,28 +10,27 @@ class Autores extends Component {
         super(props);
 
         this.state = {
-            nomes: [
-            ]
+            nomes: []
         };
     }
 
-    componentDidMount(){
+    componentDidMount() {
         ApiService.ListaNomes()
             .then(res => {
-                if(res.message === 'success')
+                if (res.message === 'success')
                     this.setState({nomes: [...this.state.nomes, ...res.data]})
             })
             .catch(() => PopUp.exibeMensagem("error", "Erro na comunicação com a API ao tentar listar nomes"));
     }
 
     render() {
-        const campos = [{titulo:'Autor', dado:"nome"}];
+        const campos = [{titulo: 'Autor', dado: "nome"}];
         return (
             <Fragment>
-                <Header />
+                <Header/>
                 <div className='container'>
                     <h1>Página de Autores</h1>
-                    <Tabela campos={campos} dados={this.state.nomes} />
+                    <Tabela campos={campos} dados={this.state.nomes}/>
                 </div>
             </Fragment>
         );
