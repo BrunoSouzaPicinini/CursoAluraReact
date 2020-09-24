@@ -1,6 +1,10 @@
 import React, {Component} from "react";
 import FormValidator from "../../Utils/FormValidator";
 import PopUp from "../../Utils/PopUp";
+import TextField from "@material-ui/core/TextField";
+import Grid from "@material-ui/core/Grid";
+import Button from "@material-ui/core/Button"
+import Toast from "../Toast/Toast"
 
 class Formulario extends Component {
     constructor(props) {
@@ -32,7 +36,8 @@ class Formulario extends Component {
             nome: '',
             livro: '',
             preco: '',
-            validacao: this.validador.valido()
+            validacao: this.validador.valido(),
+            open: true
         };
 
         this.state = this.stateInicial;
@@ -71,45 +76,27 @@ class Formulario extends Component {
         const {nome, livro, preco} = this.state;
 
         return (
-            <form>
-                <div className="row">
-                    <div className="input-field col s4">
-                        <label className="input-field" htmlFor="nome">Nome</label>
-                        <input
-                            className="validate"
-                            id="nome"
-                            type="text"
-                            name="nome"
-                            value={nome}
-                            onChange={this.escutadorDeInput}/>
-                    </div>
-                    <div className="input-field col s4">
-                        <label className="input-field" htmlFor="livro">Livro</label>
-                        <input
-                            className="validate"
-                            id="livro"
-                            type="text"
-                            name="livro"
-                            value={livro}
-                            onChange={this.escutadorDeInput}
-                        />
-                    </div>
-                    <div className="input-field col s4">
-                        <label className="input-field" htmlFor="preco">Preço</label>
-                        <input
-                            className="validate"
-                            id="preco"
-                            type="text"
-                            name="preco"
-                            value={preco}
-                            onChange={this.escutadorDeInput}
-                        />
-                    </div>
-                </div>
-                <button onClick={this.submitFormulario} type="button"
-                        className="waves-effect waves-light indigo lighten-2 btn">Salvar
-                </button>
-            </form>
+            <>
+                <Toast open={this.state.open} handleClose={() => this.setState({open: false})} severity="success">Toast funcionando</Toast>
+                <form>
+                    <Grid container spacing={2} alignItems='center'>
+                        <Grid item>
+                            <TextField id='nome' name='nome' label='Nome' variant='outlined' value={nome} onChange={this.escutadorDeInput}/>
+                        </Grid>
+                        <Grid item>
+                            <TextField id='livro' name='livro' label='Livro' variant='outlined' value={livro} onChange={this.escutadorDeInput}/>
+                        </Grid>
+                        <Grid item>
+                            <TextField id='preco' name='preco' label='Preço' variant='outlined' value={preco} onChange={this.escutadorDeInput}/>
+                        </Grid>
+                        <Grid item>
+                            <Button variant='contained' color='primary' onClick={this.submitFormulario} type="button"
+                                    className="waves-effect waves-light indigo lighten-2 btn">Salvar
+                            </Button>
+                        </Grid>
+                    </Grid>
+                </form>
+            </>
         );
     }
 }
