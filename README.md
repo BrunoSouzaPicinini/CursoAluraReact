@@ -34,3 +34,10 @@ Entre via terminal no diretório raiz da API e inicialize com o comando:
 ```
 npm start
 ```
+
+## Rodar com Docker
+
+```
+docker run -d --name react-api -p 8000:8000 brunosouzapicinini/curso-alura-react-api:1.0.0
+docker run -d --name react -p 80:80 brunosouzapicinini/curso-alura-react:0.1.1
+```
