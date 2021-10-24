@@ -1,6 +1,6 @@
 variables:
-  DOCKER_REPO_NAME: 
-  DOCKER_IMAGE_NAME: portal-licenciamento-ambiental
+  DOCKER_REPO_NAME: https://hub.docker.com/
+  DOCKER_IMAGE_NAME:  brunosouzapicinini/curso-alura-react
 
 stages:
   - compile
