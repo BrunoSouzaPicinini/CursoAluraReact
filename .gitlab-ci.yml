@@ -31,7 +31,8 @@ build-docker:
     - export VERSION=$(jq -r .version package.json)
     - docker login -u $DOCKER_REPO_USER -p $DOCKER_REPO_PASS
   script:
-    - echo "$DOCKER_IMAGE_NAME:$VERSION"
+    - echo $DOCKER_IMAGE_NAME
+    - echo $VERSION
     - docker build -t $DOCKER_IMAGE_NAME:$VERSION .
     - docker image push $DOCKER_IMAGE_NAME:$VERSION
   dependencies:
