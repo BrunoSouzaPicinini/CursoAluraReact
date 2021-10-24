@@ -1,5 +1,6 @@
 variables:
   DOCKER_IMAGE_NAME: brunosouzapicinini/curso-alura-react
+  VERSION: latest
 
 stages:
   - compile
@@ -11,16 +12,26 @@ compile-test:
   script:
     - npm install
     - npm run build
-  
+
+get-build-version:
+  stage: compile
+  image: node:14.8.0-buster
+  script:
+    - echo "VERSION=$(node -p "require('./package.json').version")" >> build.env
+  artifacts:
+    reports:
+      dotenv: build.env
+
 build-docker:
   stage: build
   image: docker:stable
   services:
   - docker:dind
   before_script:
-    - apt-get update && apt-get install -yqq jq
     - export VERSION=$(jq -r .version package.json)
     - docker login -u $DOCKER_REPO_USER -p $DOCKER_REPO_PASS
   script:
     - docker build -t $DOCKER_IMAGE_NAME:$VERSION .
     - docker image push $DOCKER_IMAGE_NAME:$VERSION
+  dependencies:
+    - get-build-version
