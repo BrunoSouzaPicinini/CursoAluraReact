@@ -7,10 +7,10 @@ stages:
   - build
 
 compile-test:
-  variables: 
-    PACKAGE_VERSION: (cat package.json \ | grep version \| head -1 \| awk -F: '{ print $2 }' \ | sed 's/[",]//g' | tr -d '[[:space:]]')
   stage: compile
   image: node:14.8.0-buster
+  before_script:
+    - export TESTEVAR=$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[",]//g' | tr -d '[[:space:]]')
   script:
     - npm install
     - npm run build
