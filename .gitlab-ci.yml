@@ -8,17 +8,16 @@ stages:
 
 compile-test:
   stage: compile
-  image:
-    name: node:14.17.3-buster
+  image: node:14.8.0-buster
   script:
     - npm install
     - npm run build
 
 build-docker:
   stage: build
-  image: docker:latest
+  image: docker:stable
   services:
-    - docker:dind
+  - docker:dind
   before_script:
     - docker login $DOCKER_REPO_NAME -u $DOCKER_REPO_USER -p $DOCKER_REPO_PASS
   script:
